@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision for End of Session | JeParleEnglish</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --blue-royal: #1e3a8a; --gold-main: #fbbf24; }
+        .brand-blue-bg { background-color: var(--blue-royal); }
+        .brand-gold-bg { background-color: var(--gold-main); }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+
+        const questions = [
+            // Tenses (To Be / To Have) - 6 Qs
+            { q: "I ________ 65 years old.", ans: 0, opts: ["am", "have", "is", "has"], reason: "We use 'to be' (I am) for age.", cat: "Tenses (To Be / To Have)" },
+            { q: "My sister ________ two children.", ans: 0, opts: ["has", "have", "is", "are"], reason: "She (sister) takes 'has'.", cat: "Tenses (To Be / To Have)" },
+            { q: "My parents ________ happy today.", ans: 0, opts: ["are", "is", "have", "has"], reason: "Parents (they) = are.", cat: "Tenses (To Be / To Have)" },
+            { q: "We ________ a house in Quebec.", ans: 0, opts: ["have", "am", "are", "is"], reason: "We = have.", cat: "Tenses (To Be / To Have)" },
+            { q: "He ________ tennis on weekends.", ans: 0, opts: ["plays", "play", "playing", "is play"], reason: "He (singular) takes the 's'.", cat: "Tenses (To Be / To Have)" },
+            { q: "I ________ from Montreal.", ans: 0, opts: ["come", "go", "live", "stay"], reason: "'Come from' means origin.", cat: "Tenses (To Be / To Have)" },
+
+            // Sentence Structure & Yes/No Questions - 6 Qs
+            { q: "Which sentence is correct?", ans: 0, opts: ["I drink coffee.", "Drink I coffee.", "I coffee drink.", "Coffee I drink."], reason: "Order: Subject-Verb-Object.", cat: "Sentence Structure & Yes/No Questions" },
+            { q: "Which order is correct?", ans: 0, opts: ["He reads a book every night.", "Every night he a book reads.", "A book he reads every night.", "Reads he a book."], reason: "Time phrase goes at the end.", cat: "Sentence Structure & Yes/No Questions" },
+            { q: "Which is correct?", ans: 0, opts: ["We plant flowers in the garden.", "In the garden plant we flowers.", "Flowers plant we in the garden.", "We flowers plant."], reason: "Structure: Subject-Verb-Object-Location.", cat: "Sentence Structure & Yes/No Questions" },
+            { q: "________ you like gardening?", ans: 0, opts: ["Do", "Does", "Are", "Is"], reason: "Use 'Do' for 'you'.", cat: "Sentence Structure & Yes/No Questions" },
+            { q: "________ she have a car?", ans: 0, opts: ["Does", "Do", "Are", "Is"], reason: "Use 'Does' for 'she'.", cat: "Sentence Structure & Yes/No Questions" },
+            { q: "________ they at home?", ans: 0, opts: ["Are", "Do", "Is", "Does"], reason: "Asking for location = verb to be.", cat: "Sentence Structure & Yes/No Questions" },
+
+            // Daily Routines & Adverbs - 6 Qs
+            { q: "I ________ at 7:00 AM.", ans: 0, opts: ["always wake up", "wake up always", "wake always up", "always wakes up"], reason: "Adverb before the verb.", cat: "Daily Routines & Adverbs" },
+            { q: "She ________ breakfast.", ans: 0, opts: ["never eats", "eats never", "never eat", "never is eating"], reason: "Adverb before the verb.", cat: "Daily Routines & Adverbs" },
+            { q: "They ________ to the park.", ans: 0, opts: ["sometimes go", "go sometimes", "sometimes goes", "are sometimes go"], reason: "Adverb before the verb.", cat: "Daily Routines & Adverbs" },
+            { q: "He is ________ tired.", ans: 0, opts: ["usually", "usual", "usually is", "is usually"], reason: "Adverb after 'is'.", cat: "Daily Routines & Adverbs" },
+            { q: "We ________ drink coffee.", ans: 0, opts: ["often", "often are", "are often", "often do"], reason: "Adverb before the verb.", cat: "Daily Routines & Adverbs" },
+            { q: "Nice to ________ you.", ans: 0, opts: ["meet", "see", "look", "know"], reason: "'Meet' for introductions.", cat: "Daily Routines & Adverbs" },
+
+            // Spelling - 6 Qs
+            { q: "Which is spelled correctly?", ans: 0, opts: ["Wednesday", "Wenesday", "Wensday", "Wedensday"], reason: "Wednesday is correct.", cat: "Spelling" },
+            { q: "Which is spelled correctly?", ans: 0, opts: ["Beautiful", "Beutiful", "Beautifull", "Buitiful"], reason: "Beautiful is correct.", cat: "Spelling" },
+            { q: "Which is spelled correctly?", ans: 0, opts: ["Restaurant", "Restarant", "Restaurante", "Restaurent"], reason: "Restaurant is correct.", cat: "Spelling" },
+            { q: "Which is spelled correctly?", ans: 0, opts: ["Tuesday", "Teusday", "Tuseday", "Tueseday"], reason: "Tuesday is correct.", cat: "Spelling" },
+            { q: "Which is spelled correctly?", ans: 0, opts: ["Quiet", "Quit", "Quiete", "Qiet"], reason: "Quiet is correct.", cat: "Spelling" },
+            { q: "Which is spelled correctly?", ans: 0, opts: ["Weather", "Wether", "Wather", "Weather"], reason: "Weather is correct.", cat: "Spelling" },
+
+            // Nouns & Quantities - 6 Qs
+            { q: "One child, two ________.", ans: 0, opts: ["children", "childs", "childrens", "childes"], reason: "Children is the plural.", cat: "Nouns & Quantities" },
+            { q: "One man, two ________.", ans: 0, opts: ["men", "mans", "mens", "mains"], reason: "Men is the plural.", cat: "Nouns & Quantities" },
+            { q: "One foot, two ________.", ans: 0, opts: ["feet", "foots", "feets", "footies"], reason: "Feet is the plural.", cat: "Nouns & Quantities" },
+            { q: "________ apples do you have?", ans: 0, opts: ["How many", "How much", "How", "What"], reason: "Many for countable nouns.", cat: "Nouns & Quantities" },
+            { q: "________ water do you drink?", ans: 0, opts: ["How much", "How many", "What much", "How"], reason: "Much for uncountable nouns.", cat: "Nouns & Quantities" },
+            { q: "I do not have ________ money.", ans: 0, opts: ["much", "many", "some", "a"], reason: "Money is uncountable.", cat: "Nouns & Quantities" }
+        ];
+
+        const App = () => {
+            const [index, setIndex] = useState(0);
+            const [userAnswers, setUserAnswers] = useState(Array(questions.length).fill(null));
+            const [finished, setFinished] = useState(false);
+
+            const handleAnswer = (optIdx) => {
+                const newAnswers = [...userAnswers];
+                newAnswers[index] = optIdx;
+                setUserAnswers(newAnswers);
+            };
+
+            const calculateSummary = () => {
+                const summary = {};
+                questions.forEach((q, i) => {
+                    if (!summary[q.cat]) summary[q.cat] = { correct: 0, total: 0 };
+                    summary[q.cat].total++;
+                    if (userAnswers[i] === q.ans) summary[q.cat].correct++;
+                });
+                return summary;
+            };
+
+            const summary = calculateSummary();
+            const totalScore = questions.reduce((acc, q, i) => acc + (userAnswers[i] === q.ans ? 1 : 0), 0);
+
+            return (
+                <div className="min-h-screen bg-slate-50 p-4 md:p-8">
+                    <header className="max-w-2xl mx-auto bg-slate-900 text-white p-6 rounded-t-xl shadow-lg">
+                        <div className="flex justify-between items-center mb-2">
+                            <h1 className="text-2xl font-bold">Revision for End of Session</h1>
+                            {!finished && <span className="font-mono text-sm">{index + 1} / {questions.length}</span>}
+                        </div>
+                        {!finished && <div className="w-full bg-slate-700 h-2 rounded-full"><div className="bg-amber-400 h-full transition-all" style={{ width: `${((index + 1) / questions.length) * 100}%` }}></div></div>}
+                    </header>
+
+                    {!finished ? (
+                        <div className="max-w-2xl mx-auto bg-white p-8 rounded-b-xl shadow-lg">
+                            <h2 className="text-xl font-bold mb-6">{questions[index].q}</h2>
+                            <div className="space-y-3">
+                                {questions[index].opts.map((opt, i) => (
+                                    <button key={i} onClick={() => handleAnswer(i)} className={`w-full p-4 text-left rounded-lg border-2 ${userAnswers[index] === i ? 'bg-blue-100 border-blue-500' : 'border-slate-200 hover:border-blue-300'}`}>{opt}</button>
+                                ))}
+                            </div>
+                            <div className="flex gap-4 mt-8">
+                                <button onClick={() => setIndex(Math.max(0, index - 1))} disabled={index === 0} className="flex-1 bg-slate-200 py-2 rounded font-bold disabled:opacity-50">Back</button>
+                                {index < questions.length - 1 ? <button onClick={() => setIndex(index + 1)} className="flex-1 brand-blue-bg text-white py-2 rounded font-bold">Next</button> : <button onClick={() => setFinished(true)} className="flex-1 bg-green-600 text-white py-2 rounded font-bold">Finish Test</button>}
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="max-w-2xl mx-auto bg-white p-8 rounded-b-xl shadow-lg fade-in">
+                            <h2 className="text-3xl font-bold mb-6 text-center">Final Score: {totalScore} / {questions.length}</h2>
+                            <div className="mb-8">
+                                <h3 className="font-bold text-xl mb-4 border-b pb-2">Topic Analysis:</h3>
+                                {Object.keys(summary).map(cat => {
+                                    const percentage = summary[cat].correct / summary[cat].total;
+                                    return (
+                                        <div key={cat} className={`mb-3 p-3 rounded border ${percentage < 0.7 ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'}`}>
+                                            <span className="font-bold">{cat}:</span> {summary[cat].correct} / {summary[cat].total}
+                                            {percentage < 0.7 && <p className="text-red-700 text-sm font-semibold italic">Focus practice needed on {cat}.</p>}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                            <h3 className="font-bold text-xl mb-4 border-b pb-2">Review Answers:</h3>
+                            <div className="space-y-4 mb-8">
+                                {questions.map((q, i) => (
+                                    <div key={i} className={`p-4 rounded border ${userAnswers[i] === q.ans ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+                                        <p className="font-bold">{i+1}. {q.q}</p>
+                                        <p className="text-sm">Your answer: <strong>{q.opts[userAnswers[i]]}</strong></p>
+                                        <p className="text-sm font-bold text-green-700">Correct: {q.opts[q.ans]}</p>
+                                        <p className="text-xs text-slate-500 italic">{q.reason}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <button onClick={() => { setIndex(0); setUserAnswers(Array(questions.length).fill(null)); setFinished(false); }} className="w-full bg-amber-400 py-3 rounded-lg font-bold hover:bg-amber-500 transition shadow">Restart Revision</button>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
