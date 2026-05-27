@@ -21,42 +21,42 @@
 
         const questions = [
             // Tenses (To Be / To Have) - 6 Qs
-            { q: "I ________ 65 years old.", ans: 0, opts: ["am", "have", "is", "has"], reason: "We use 'to be' (I am) for age.", cat: "Tenses (To Be / To Have)" },
-            { q: "My sister ________ two children.", ans: 0, opts: ["has", "have", "is", "are"], reason: "She (sister) takes 'has'.", cat: "Tenses (To Be / To Have)" },
+            { q: "I ________ 65 years old.", ans: 3, opts: ["have", "is", "has", "am"], reason: "We use 'to be' (I am) for age.", cat: "Tenses (To Be / To Have)" },
+            { q: "My sister ________ two children.", ans: 1, opts: [ "have", "has", "is", "are"], reason: "She (sister) takes 'has'.", cat: "Tenses (To Be / To Have)" },
             { q: "My parents ________ happy today.", ans: 0, opts: ["are", "is", "have", "has"], reason: "Parents (they) = are.", cat: "Tenses (To Be / To Have)" },
             { q: "We ________ a house in Quebec.", ans: 0, opts: ["have", "am", "are", "is"], reason: "We = have.", cat: "Tenses (To Be / To Have)" },
-            { q: "He ________ tennis on weekends.", ans: 0, opts: ["plays", "play", "playing", "is play"], reason: "He (singular) takes the 's'.", cat: "Tenses (To Be / To Have)" },
+            { q: "He ________ tennis on weekends.", ans: 1, opts: ["play", "plays", "playing", "is play"], reason: "He (singular) takes the 's'.", cat: "Tenses (To Be / To Have)" },
             { q: "I ________ from Montreal.", ans: 0, opts: ["come", "go", "live", "stay"], reason: "'Come from' means origin.", cat: "Tenses (To Be / To Have)" },
 
             // Sentence Structure & Yes/No Questions - 6 Qs
             { q: "Which sentence is correct?", ans: 0, opts: ["I drink coffee.", "Drink I coffee.", "I coffee drink.", "Coffee I drink."], reason: "Order: Subject-Verb-Object.", cat: "Sentence Structure & Yes/No Questions" },
-            { q: "Which order is correct?", ans: 0, opts: ["He reads a book every night.", "Every night he a book reads.", "A book he reads every night.", "Reads he a book."], reason: "Time phrase goes at the end.", cat: "Sentence Structure & Yes/No Questions" },
+            { q: "Which order is correct?", ans: 2, opts: [ "Every night he a book reads.", "A book he reads every night.","He reads a book every night.", "Reads he a book."], reason: "Time phrase goes at the end.", cat: "Sentence Structure & Yes/No Questions" },
             { q: "Which is correct?", ans: 0, opts: ["We plant flowers in the garden.", "In the garden plant we flowers.", "Flowers plant we in the garden.", "We flowers plant."], reason: "Structure: Subject-Verb-Object-Location.", cat: "Sentence Structure & Yes/No Questions" },
             { q: "________ you like gardening?", ans: 0, opts: ["Do", "Does", "Are", "Is"], reason: "Use 'Do' for 'you'.", cat: "Sentence Structure & Yes/No Questions" },
-            { q: "________ she have a car?", ans: 0, opts: ["Does", "Do", "Are", "Is"], reason: "Use 'Does' for 'she'.", cat: "Sentence Structure & Yes/No Questions" },
-            { q: "________ they at home?", ans: 0, opts: ["Are", "Do", "Is", "Does"], reason: "Asking for location = verb to be.", cat: "Sentence Structure & Yes/No Questions" },
+            { q: "________ she have a car?", ans: 3, opts: [ "Do", "Are", "Is","Does"], reason: "Use 'Does' for 'she'.", cat: "Sentence Structure & Yes/No Questions" },
+            { q: "________ they at home?", ans: 1, opts: ["Do", "Are", "Is", "Does"], reason: "Asking for location = verb to be.", cat: "Sentence Structure & Yes/No Questions" },
 
             // Daily Routines & Adverbs - 6 Qs
-            { q: "I ________ at 7:00 AM.", ans: 0, opts: ["always wake up", "wake up always", "wake always up", "always wakes up"], reason: "Adverb before the verb.", cat: "Daily Routines & Adverbs" },
-            { q: "She ________ breakfast.", ans: 0, opts: ["never eats", "eats never", "never eat", "never is eating"], reason: "Adverb before the verb.", cat: "Daily Routines & Adverbs" },
+            { q: "I ________ at 7:00 AM.", ans: 2, opts: [ "wake up always", "wake always up", "always wake up","always wakes up"], reason: "Adverb before the verb.", cat: "Daily Routines & Adverbs" },
+            { q: "She ________ breakfast.", ans: 3, opts: [ "eats never", "never eat", "never is eating", "never eats"], reason: "Adverb before the verb.", cat: "Daily Routines & Adverbs" },
             { q: "They ________ to the park.", ans: 0, opts: ["sometimes go", "go sometimes", "sometimes goes", "are sometimes go"], reason: "Adverb before the verb.", cat: "Daily Routines & Adverbs" },
-            { q: "He is ________ tired.", ans: 0, opts: ["usually", "usual", "usually is", "is usually"], reason: "Adverb after 'is'.", cat: "Daily Routines & Adverbs" },
+            { q: "He is ________ tired.", ans: 1, opts: ["usual", "usually", "usually is", "is usually"], reason: "Adverb after 'is'.", cat: "Daily Routines & Adverbs" },
             { q: "We ________ drink coffee.", ans: 0, opts: ["often", "often are", "are often", "often do"], reason: "Adverb before the verb.", cat: "Daily Routines & Adverbs" },
             { q: "Nice to ________ you.", ans: 0, opts: ["meet", "see", "look", "know"], reason: "'Meet' for introductions.", cat: "Daily Routines & Adverbs" },
 
             // Spelling - 6 Qs
             { q: "Which is spelled correctly?", ans: 0, opts: ["Wednesday", "Wenesday", "Wensday", "Wedensday"], reason: "Wednesday is correct.", cat: "Spelling" },
             { q: "Which is spelled correctly?", ans: 0, opts: ["Beautiful", "Beutiful", "Beautifull", "Buitiful"], reason: "Beautiful is correct.", cat: "Spelling" },
-            { q: "Which is spelled correctly?", ans: 0, opts: ["Restaurant", "Restarant", "Restaurante", "Restaurent"], reason: "Restaurant is correct.", cat: "Spelling" },
+            { q: "Which is spelled correctly?", ans: 2, opts: [ "Restarant", "Restaurante","Restaurant", "Restaurent"], reason: "Restaurant is correct.", cat: "Spelling" },
             { q: "Which is spelled correctly?", ans: 0, opts: ["Tuesday", "Teusday", "Tuseday", "Tueseday"], reason: "Tuesday is correct.", cat: "Spelling" },
-            { q: "Which is spelled correctly?", ans: 0, opts: ["Quiet", "Quit", "Quiete", "Qiet"], reason: "Quiet is correct.", cat: "Spelling" },
-            { q: "Which is spelled correctly?", ans: 0, opts: ["Weather", "Wether", "Wather", "Weather"], reason: "Weather is correct.", cat: "Spelling" },
+            { q: "Which is spelled correctly?", ans: 2, opts: ["Quiete", "Quit", "Quiet", "Qiet"], reason: "Quiet is correct.", cat: "Spelling" },
+            { q: "Which is spelled correctly?", ans: 1, opts: [ "Wether","Weather", "Wather", "Weather"], reason: "Weather is correct.", cat: "Spelling" },
 
             // Nouns & Quantities - 6 Qs
-            { q: "One child, two ________.", ans: 0, opts: ["children", "childs", "childrens", "childes"], reason: "Children is the plural.", cat: "Nouns & Quantities" },
-            { q: "One man, two ________.", ans: 0, opts: ["men", "mans", "mens", "mains"], reason: "Men is the plural.", cat: "Nouns & Quantities" },
-            { q: "One foot, two ________.", ans: 0, opts: ["feet", "foots", "feets", "footies"], reason: "Feet is the plural.", cat: "Nouns & Quantities" },
-            { q: "________ apples do you have?", ans: 0, opts: ["How many", "How much", "How", "What"], reason: "Many for countable nouns.", cat: "Nouns & Quantities" },
+            { q: "One child, two ________.", ans: 2, opts: ["childrens", "childs", "children", "childes"], reason: "Children is the plural.", cat: "Nouns & Quantities" },
+            { q: "One man, two ________.", ans: 1, opts: [ "mans","men", "mens", "mains"], reason: "Men is the plural.", cat: "Nouns & Quantities" },
+            { q: "One foot, two ________.", ans: 2, opts: ["feets", "foots", "feet", "footies"], reason: "Feet is the plural.", cat: "Nouns & Quantities" },
+            { q: "________ apples do you have?", ans: 3, opts: ["How much", "How", "What", "How many"], reason: "Many for countable nouns.", cat: "Nouns & Quantities" },
             { q: "________ water do you drink?", ans: 0, opts: ["How much", "How many", "What much", "How"], reason: "Much for uncountable nouns.", cat: "Nouns & Quantities" },
             { q: "I do not have ________ money.", ans: 0, opts: ["much", "many", "some", "a"], reason: "Money is uncountable.", cat: "Nouns & Quantities" }
         ];
